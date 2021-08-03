@@ -1,0 +1,12 @@
+<h1>View <%= @spell.name %></h1>
+<p>
+<%= link_to 'All Spells', spells_path%>|
+<%= link_to "Home", root_path %>    
+</p>
+<table>
+    <tr><td>Level:</td><td><%= @spell.level %></td></tr>
+    <tr><td>School:</td><td><%= @spell.school %></td></tr>
+    <tr><td>Classes:</td><td><%= @spell.spell_classes %></td></tr>
+    <tr><td>Concentration:</td><td><%= @spell.concentration %></td></tr>
+    <tr><td>Description:</td><td><%= @spell.description %></td></tr>
+</table>

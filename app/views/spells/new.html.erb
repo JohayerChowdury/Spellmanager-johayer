@@ -1,0 +1,38 @@
+<h1>Create New Spell</h1>
+
+<p>
+<%= link_to 'All Spells', spells_path%>|
+<%= link_to "Home", root_path %>    
+</p>
+
+<%= form_with(model: @spell, local: true) do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :level %>
+    <%= form.number_field :level %>
+  </div>
+
+  <div>
+    <%= form.label :school %>
+    <%= form.select(:spell_id, Spell.array_for_select_schools, { include_blank: true })%>
+  </div>
+
+  <div>
+    <%= form.label :concentration %>
+    <%= form.select(:spell_id, Spell.array_for_select_concentration) %>
+  </div>
+
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
