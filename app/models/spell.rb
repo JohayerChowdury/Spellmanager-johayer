@@ -4,8 +4,8 @@ class Spell < ApplicationRecord
     # Validations
     
     # Name
-    validates_presence_of :name, message: "Name cannot be blank."
-    validates_uniqueness_of :name, case_sensitive: false, message: "Name cannot be the same as an existing spell. Case insensitive."
+    validates_presence_of :name, message: ": cannot be blank."
+    validates_uniqueness_of :name, case_sensitive: false, message: ": cannot be the same as an existing spell. Case insensitive."
     validates_length_of :name, maximum: 70
     validates :name, uniqueness: true
     
@@ -15,9 +15,9 @@ class Spell < ApplicationRecord
     
     # School
     # Used inclusion, learned from: https://guides.rubyonrails.org/active_record_validations.html#inclusion
-    validates_presence_of :school, message: "School cannot be blank."
-    school_inclusion_message = "Must be one of the schools listed: Conjuration, Necromancy, Evocation, Abjuration, " \
-"Transmutation, Divination, Enchantment, Illusion"
+    validates_presence_of :school, message: ": cannot be blank."
+    school_inclusion_message = ": must be one of the schools listed."
+    
     validates :school, inclusion: { in: %w(Conjuration Necromancy Evocation Abjuration
                                             Transmutation Divination Enchantment Illusion), 
                                     message: school_inclusion_message}
@@ -41,7 +41,7 @@ class Spell < ApplicationRecord
     def is_one_or_more_class
         if (is_bard.present? == false  && is_cleric.present? == false && is_druid.present? == false && is_paladin.present? == false && 
         is_ranger.present? == false && is_sorcerer.present? == false && is_warlock.present? == false && is_wizard.present? == false)
-            errors.add(:spell, "A spell must have one or more classes.")
+            errors.add(:spell, ": must have one or more classes.")
         end         
     end
     
@@ -50,7 +50,7 @@ class Spell < ApplicationRecord
     validates :concentration, inclusion: { in: %w(Yes No) }
     
     # Description
-    validates :description, exclusion: {in: [nil], message: "cannot be nil"}
+    validates :description, exclusion: {in: [nil, ""], message: ": cannot be blank."}
     validates_length_of :description, maximum: 4096
     
     def self.order_by
@@ -59,14 +59,22 @@ class Spell < ApplicationRecord
     
     # Code given in Betterbooks homework instructions, created by instructor/TA
     def self.array_for_select_schools
-        array = ["Conjuration", "Necromancy", "Evocation", "Abjuration", "Transmutation", 
-            "Divination", "Enchantment", "Illusion"]
+        array = ["Abjuration", "Conjuration", "Divination", "Enchantment", 
+            "Evocation", "Illusion", "Necromancy", "Transmutation"]
         return array
     end
     
-    def self.array_for_select_concentration
-        array = ["No", "Yes"]
-        return array
+#     def self.array_for_select_concentration
+#         array = ["No", "Yes"]
+#         return array
+#     end
+    
+    def self.radio_button_for_concentration
+        
+    end
+    
+    def self.array_for_select_level
+        array = [0,1,2,3,4,5,6,7,8,9]
     end
     
     def spell_classes

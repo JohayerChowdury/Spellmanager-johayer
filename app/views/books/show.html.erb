@@ -1,2 +1,14 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<p id="notice"><%= flash[:notice] %></p>
+
+<h1>View <%= @book.name %></h1>
+<p>
+<%= link_to 'All Books', books_path%>|
+<%= link_to "Home", root_path %>    
+</p>
+<!-- <table>
+    <tr><td><strong>Level:</strong></td><td><%= @book.spells.level %></td></tr>
+    <tr><td><strong>School:</strong></td><td><%= @spell.school %></td></tr>
+    <tr><td><strong>Classes:</strong></td><td><%= @spell.spell_classes %></td></tr>
+    <tr><td><strong>Concentration:</strong></td><td><%= @spell.concentration %></td></tr>
+    <tr><td><strong>Description:</strong></td><td><%= @spell.description %></td></tr>
+</table> -->
