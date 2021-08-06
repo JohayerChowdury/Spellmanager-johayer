@@ -11,6 +11,10 @@ classmates, other knowledgeable people, books or non-course
 websites (please include a description of discussions with 
 the TA or the instructor):
 
+Campuswire posts helped build ideas including how to pass hidden parameters in forms.
+
+Throughout my comments, I've added URLs to sites that helped understand how to use Ruby syntax
+to write helpful code.
 
 Record of Giving Assistance to Others
 -------------------------------------
