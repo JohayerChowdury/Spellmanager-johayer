@@ -53,6 +53,7 @@ class Spell < ApplicationRecord
     validates :description, exclusion: {in: [nil, ""], message: ": cannot be blank."}
     validates_length_of :description, maximum: 4096
     
+    #Order spells
     def self.order_by
         return Spell.order(level: :asc, name: :asc)
     end
@@ -62,15 +63,6 @@ class Spell < ApplicationRecord
         array = ["Abjuration", "Conjuration", "Divination", "Enchantment", 
             "Evocation", "Illusion", "Necromancy", "Transmutation"]
         return array
-    end
-    
-#     def self.array_for_select_concentration
-#         array = ["No", "Yes"]
-#         return array
-#     end
-    
-    def self.radio_button_for_concentration
-        
     end
     
     def self.array_for_select_level
@@ -103,6 +95,10 @@ class Spell < ApplicationRecord
         if is_wizard == true
             spell_classes.push("Wizard")
         end
-        return spell_classes
+        
+        #join elements in an array to produce a string, learned from: https://apidock.com/ruby/Array/join
+        string = spell_classes.join(", ")
+        return string
     end
+    
 end

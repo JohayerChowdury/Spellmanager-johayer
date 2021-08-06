@@ -1,0 +1,83 @@
+<%= form_with(model: spell) do |form| %>
+  <% if spell.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(spell.errors.count, "error") %> prohibited this spell from being saved:</h2>
+
+      <ul>
+        <% spell.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :level %>
+    <%= form.select :level, Spell.array_for_select_level %>
+  </div>
+
+  <div class="field">
+    <%= form.label :school %>
+    <%= form.select :school, Spell.array_for_select_schools, { prompt: "Select a School" } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :concentration %>
+    <%= form.radio_button :concentration, "No" %>No
+    <%= form.radio_button :concentration, "Yes" %>Yes
+  </div>
+
+  <div class="field">
+    <%= form.label :is_bard? %>
+    <%= form.check_box :is_bard %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_cleric? %>
+    <%= form.check_box :is_cleric %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_druid? %>
+    <%= form.check_box :is_druid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_paladin? %>
+    <%= form.check_box :is_paladin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_ranger? %>
+    <%= form.check_box :is_ranger %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_sorcerer? %>
+    <%= form.check_box :is_sorcerer %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_warlock? %>
+    <%= form.check_box :is_warlock %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_wizard? %>
+    <%= form.check_box :is_wizard %>
+  </div>
+    
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Submit" %>
+  </div>
+<% end %>

@@ -1,14 +1,33 @@
-<p id="notice"><%= flash[:notice] %></p>
+<p id="notice"><%= notice %></p>
 
 <h1>View <%= @spell.name %></h1>
+
+<%= link_to 'All Spells', spells_path %> |
+<%= link_to 'Home', root_path %>
+
 <p>
-<%= link_to 'All Spells', spells_path%>|
-<%= link_to "Home", root_path %>    
+  <strong>Level:</strong>
+  <%= @spell.level %>
 </p>
-<table>
-    <tr><td><strong>Level:</strong></td><td><%= @spell.level %></td></tr>
-    <tr><td><strong>School:</strong></td><td><%= @spell.school %></td></tr>
-    <tr><td><strong>Classes:</strong></td><td><%= @spell.spell_classes %></td></tr>
-    <tr><td><strong>Concentration:</strong></td><td><%= @spell.concentration %></td></tr>
-    <tr><td><strong>Description:</strong></td><td><%= @spell.description %></td></tr>
-</table>
+
+<p>
+  <strong>School:</strong>
+  <%= @spell.school %>
+</p>
+
+<p>
+   <strong>Classes:</strong>
+   <%= @spell.spell_classes.to_s %>
+</p>
+
+<p>
+  <strong>Concentration:</strong>
+  <%= @spell.concentration %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @spell.description %>
+</p>
+
+<%= link_to "Add #{@spell.name} to Book", spell_add_spell_to_book_path %>

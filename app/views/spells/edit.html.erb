@@ -1,2 +1,11 @@
-<h1>Spells#edit</h1>
-<p>Find me in app/views/spells/edit.html.erb</p>
+<h1>Edit <%= @spell.name %></h1>
+
+<%= link_to 'All Spells', spells_path %> |
+<%= link_to 'Home', root_path %>
+<br>
+<br>
+<%= render 'form', spell: @spell %>
+<br>
+<%= form_with model: @spell, local: true, method: 'delete' do |f| %>
+        <%= f.submit "Delete Spell" %>
+<% end %>
